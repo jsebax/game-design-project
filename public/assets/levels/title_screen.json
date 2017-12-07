@@ -6,26 +6,32 @@
 		"background",
 		"texts"
 	],
-	"sprites": {
+	"prefabs": {
 		"background": {
-			"type": "sprite",
+			"type": "background",
 			"position": {"x": 0, "y": 0},
-			"texture": "background_image",
-			"group": "background"
+			"properties": {
+				"texture": "background_image",
+				"group": "background"
+			}
 		},
 		"title_message": {
 			"type": "text",
 			"position": {"x": 20, "y": 200},
-			"style": {"font": "65px Kells", "fill": "#000000"},
-			"text": "Phaser RPG",
-			"group": "texts"
+			"properties": {
+				"style": {"font": "65px Kells", "fill": "#000000"},
+				"text": "Phaser RPG",
+				"group": "texts"
+			}
 		},
 		"start_message": {
 			"type": "text",
 			"position": {"x": 150, "y": 400},
-			"style": {"font": "20px Kells", "fill": "#000000"},
-			"text": "click to start playing",
-			"group": "texts"
+			"properties": {
+				"style": {"font": "20px Kells", "fill": "#000000"},
+				"text": "click to start playing",
+				"group": "texts"
+			}
 		}
 	}
 }

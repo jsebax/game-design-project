@@ -20,18 +20,11 @@ RPG.JSONLevelState.prototype.create = function () {
     this.groups[group_name] = this.game.add.group();
   }, this);
 
-  this.sprites = {};
-  for (var sprite_name in this.level_data.sprites) {
-    var sprite_data = this.level_data.sprites[sprite_name];
-    switch (sprite_data.type) {
-      case 'sprite':
-        var sprite = this.game.add.sprite(sprite_data.position.x, sprite_data.position.y, sprite_data.texture);
-        break;
-      case 'text':
-        var sprite = this.game.add.text(sprite_data.position.x, sprite_data.position.y, sprite_data.text, sprite_data.style);
-        break;
+  this.prefabs = {};
+  for (var prefab_name in this.level_data.prefabs) {
+    var prefab_data = this.level_data.prefabs[prefab_name];
+    if (this.prefab_classes.hasOwnProperty(prefab_data.type)) {
+      var prefab = new this.prefab_classes[prefab_data.type](this, prefab_data.name, prefab_data.position, prefab_data.properties);
     }
-    this.sprites[sprite_name] = sprite;
-    this.groups[sprite_data.group].add(sprite);
   }
 };
