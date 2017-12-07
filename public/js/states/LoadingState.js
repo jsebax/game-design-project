@@ -6,6 +6,8 @@ RPG.LoadingState = function () {
 };
 
 RPG.LoadingState.prototype = Object.create(Phaser.State.prototype);
+RPG.LoadingState.prototype.constructor = RPG.LoadingState;
+
 RPG.LoadingState.prototype.init = function (level_data) {
   'use strict';
   this.level_data = level_data;
@@ -24,9 +26,10 @@ RPG.LoadingState.prototype.init = function (level_data) {
 
 RPG.LoadingState.prototype.preload = function () {
   'use strict';
-  var assets = this.level_data.assets;
-  for (var asset_key in assets) {
-    var asset = assets[asset_key];
+  var assets, asset_loader, asset_key, asset;
+  assets = this.level_data.assets;
+  for (asset_key in assets) { // load assets according to asset key
+    asset = assets[asset_key];
     switch (asset.type) {
       case 'image':
         this.load.image(asset_key, asset.source);
@@ -40,5 +43,5 @@ RPG.LoadingState.prototype.preload = function () {
 
 RPG.LoadingState.prototype.create = function () {
   'use strict';
-  console.log('starting title state');
+  this.game.state.start('TitleState', true, false, this.level_data);
 };
