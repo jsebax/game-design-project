@@ -10,13 +10,27 @@
         margin: 0px;
         background: black;
       }
+
+      @font-face {
+        font-family: 'Kells';
+        src: url('assets/fonts/kells_uncial.ttf');
+      }
+        
+      .fontPreload {
+        font-family: 'Kells';
+        position:absolute;
+        left:-100px;
+      }
     </style>
   </head>
   <body>
+    <div class="fontPreload">.</div>
 
     <!-- includes the game main file -->
     <script src="js/phaser.js"></script>
 
+    <script src="js/states/BootState.js"></script>
+    <script src="js/states/LoadingState.js"></script>
     <script src="js/states/TitleState.js"></script>
 
     <script src="js/main.js"></script>
